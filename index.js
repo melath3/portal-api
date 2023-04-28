@@ -5,7 +5,7 @@ require('dotenv').config();
 const authsRoute = require("./routes/Auths");
 const userRoute = require("./routes/Users");
 const taskRoute = require("./routes/Tasks");
-const searchRoute = require("./routes/searchs");
+const searchRoute = require("./routes/Searchs");
 const multer = require("multer");
 const path = require("path");
 const cors = require('cors');
