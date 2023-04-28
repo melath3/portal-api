@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
+const PORT = process.env.PORT || 5000;
 
 const authsRoute = require("./routes/Auths");
 const userRoute = require("./routes/Users");
@@ -55,6 +56,6 @@ app.use("/api/tasks", taskRoute);
 app.use("/api/searchs", searchRoute);
 
 
-app.listen(5000, () => {
-    console.log(`Server Started at ${5000}`)
+app.listen(PORT, () => {
+    console.log(`Server Started at ${PORT}`)
 })
