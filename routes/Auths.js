@@ -4,6 +4,7 @@ const router = app.Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 
+
 //REGISTER
 router.post("/register", async (req, res) => {
     try{
@@ -24,7 +25,7 @@ router.post("/register", async (req, res) => {
 });
 
 //LOGIN
-router.post("/login", async (req,res)=>{
+router.post("/login",async (req,res)=>{
     try{
         const user = await User.findOne({username: req.body.username})
         !user && res.status(400).json("wrong credentials!")
@@ -39,22 +40,7 @@ router.post("/login", async (req,res)=>{
     }
 });
 
-router.post("/roleLogin", async (req,res)=>{
-    try{
-        const user = await User.findOne({username: req.body.username})
-        !user && res.status(400).json("wrong credentials!")
 
-      
-
-        const validated = await User.compare(req.body.role, user.role)
-        !validated && res.status(400).json("Not autherized!")
-
-        const {role, ...others} = user._doc;
-        res.status(200).json(others);
-    }catch (err) {
-        res.status(500).json(err);
-    }
-});
 
 module.exports = router;
 
